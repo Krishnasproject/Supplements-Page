@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AM Nutrition & Supplements – Premium Fitness Fuel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dark: #9A7230;
+    --cream: #FAF6EF;
+    --cream-dark: #F0E8D8;
+    --dark: #1A1208;
+    --mid: #3D2E10;
+    --text: #2A1F08;
+    --text-muted: #6B5430;
+    --white: #FFFFFF;
+    --surface: #FDF9F2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(250, 246, 239, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600;
+    letter-spacing: 0.08em; color: var(--dark);
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--dark); border: none; padding: 0.6rem 1.5rem;
+    font-family: 'Outfit', sans-serif; font-size: 0.8rem;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1A1208 0%, #3D2E10 40%, #1A1208 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 0 5%;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 60% 80%, rgba(201,168,76,0.05) 0%, transparent 40%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 16px; font-size: 0.75rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold-light);
+    margin-bottom: 2rem;
+  }
+  .hero-badge::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05;
+    font-weight: 300; color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero p {
+    font-size: 1rem; line-height: 1.8; color: rgba(250,246,239,0.65);
+    max-width: 480px; margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark); padding: 1rem 2.5rem;
+    font-family: 'Outfit', sans-serif; font-size: 0.85rem;
+    font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+    border: none; cursor: pointer; transition: all 0.3s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+  .btn-secondary {
+    background: transparent; border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light); padding: 1rem 2.5rem;
+    font-family: 'Outfit', sans-serif; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s; text-decoration: none;
+    display: inline-flex; align-items: center;
+  }
+  .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+
+  .hero-visual {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    z-index: 2;
+  }
+  .hero-visual-circle {
+    width: 440px; height: 440px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: rotateSlow 20s linear infinite;
+  }
+  @keyframes rotateSlow { to { transform: rotate(360deg); } }
+  .hero-visual-circle::before {
+    content: ''; position: absolute; inset: 20px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+  .hero-product-center {
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(201,168,76,0.15), rgba(26,18,8,0.8));
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+    animation: rotateSlow 20s linear infinite reverse;
+    font-size: 7rem;
+  }
+  .hero-stats {
+    position: absolute; bottom: 40px; right: 5%; z-index: 2;
+    display: flex; gap: 3rem;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 600; color: var(--gold-light);
+  }
+  .hero-stat .label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(250,246,239,0.4); margin-top: 4px;
+  }
+
+  /* ── BRANDS ── */
+  .brands-strip {
+    background: var(--dark); padding: 1.5rem 5%;
+    display: flex; align-items: center; gap: 2rem; overflow: hidden;
+  }
+  .brands-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(201,168,76,0.5); white-space: nowrap; flex-shrink: 0;
+  }
+  .brands-scroll { display: flex; gap: 3rem; animation: scrollBrands 20s linear infinite; }
+  @keyframes scrollBrands { to { transform: translateX(-50%); } }
+  .brand-pill {
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+    padding: 6px 20px; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(250,246,239,0.6); white-space: nowrap;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 6rem 5%; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold); opacity: 0.4; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300;
+    line-height: 1.1; color: var(--dark);
+  }
+  .section-title em { color: var(--gold-dark); font-style: italic; }
+
+  /* ── PRODUCTS ── */
+  #products { background: var(--surface); }
+  .products-header { max-width: 600px; margin-bottom: 4rem; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .product-card {
+    background: var(--white); border: 1px solid rgba(201,168,76,0.15);
+    transition: all 0.4s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .product-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.4); }
+  .product-card:hover::before { opacity: 1; }
+  .product-img {
+    background: linear-gradient(135deg, #F5EDD8 0%, #EFE0BC 100%);
+    height: 240px; display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; position: relative; overflow: hidden;
+  }
+  .product-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(201,168,76,0.08));
+  }
+  .product-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--gold); color: var(--dark);
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px;
+  }
+  .product-body { padding: 1.5rem; }
+  .product-brand {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 6px;
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--dark);
+    margin-bottom: 8px; line-height: 1.2;
+  }
+  .product-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
+  .product-flavours { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .flavour-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.3); cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .flavour-dot:hover { transform: scale(1.3); }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--dark);
+  }
+  .product-price span { font-size: 0.9rem; color: var(--text-muted); }
+  .order-btn {
+    background: var(--dark); color: var(--gold-light);
+    border: 1px solid transparent; padding: 8px 20px;
+    font-family: 'Outfit', sans-serif; font-size: 0.75rem;
+    font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s;
+  }
+  .order-btn:hover { background: var(--gold); color: var(--dark); }
+
+  /* ── WHY US ── */
+  #why { background: var(--cream); }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5px; margin-top: 4rem;
+    background: rgba(201,168,76,0.15);
+  }
+  .why-item {
+    background: var(--surface); padding: 2.5rem;
+    transition: background 0.3s;
+  }
+  .why-item:hover { background: var(--white); }
+  .why-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600; color: var(--dark);
+    margin-bottom: 0.8rem;
+  }
+  .why-text { font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); }
+
+  /* ── ORDER ── */
+  #order {
+    background: linear-gradient(135deg, #1A1208 0%, #3D2E10 100%);
+    position: relative; overflow: hidden;
+  }
+  #order::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  #order .section-label { color: var(--gold-light); }
+  #order .section-title { color: var(--cream); }
+  .order-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start; position: relative; z-index: 1;
+  }
+  .order-left { margin-top: 2rem; }
+  .order-left p { font-size: 0.9rem; line-height: 1.9; color: rgba(250,246,239,0.6); margin-top: 1.5rem; }
+  .order-features { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .order-feature { display: flex; align-items: center; gap: 14px; }
+  .order-feature-icon {
+    width: 36px; height: 36px; border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+  }
+  .order-feature-text { font-size: 0.85rem; color: rgba(250,246,239,0.7); }
+
+  .order-form {
+    background: rgba(250,246,239,0.04); border: 1px solid rgba(201,168,76,0.2);
+    padding: 3rem;
+  }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; color: var(--gold-light);
+    margin-bottom: 2rem;
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block; font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(201,168,76,0.6);
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--cream); font-family: 'Outfit', sans-serif; font-size: 0.9rem;
+    padding: 12px 16px; outline: none; transition: border-color 0.3s;
+    -webkit-appearance: none;
+  }
+  .form-group input::placeholder { color: rgba(201,168,76,0.3); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: rgba(201,168,76,0.6); background: rgba(255,255,255,0.08); }
+  .form-group select option { background: #2a1f08; color: var(--cream); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .whatsapp-btn {
+    width: 100%; padding: 1rem;
+    background: #25D366; border: none; cursor: pointer;
+    font-family: 'Outfit', sans-serif; font-size: 0.9rem;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: white; margin-top: 0.5rem;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: all 0.3s;
+  }
+  .whatsapp-btn:hover { background: #1EB856; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.35); }
+  .whatsapp-icon { width: 22px; height: 22px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); padding: 3rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; color: var(--cream);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-text { font-size: 0.75rem; color: rgba(250,246,239,0.3); }
+  .footer-wa {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.3);
+    padding: 8px 20px; color: #25D366; text-decoration: none;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+  .footer-wa:hover { background: rgba(37,211,102,0.2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate { animation: fadeUp 0.8s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; }
+  .delay-2 { animation-delay: 0.3s; opacity: 0; }
+  .delay-3 { animation-delay: 0.45s; opacity: 0; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .hero-visual { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .order-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { left: 5%; right: 5%; justify-content: space-around; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AM <span>Nutrition</span> & Supplements</div>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge animate">Premium Sports Nutrition</div>
+    <h1 class="animate delay-1">Fuel Your <em>Greatness</em><br>Beyond Limits</h1>
+    <p class="animate delay-2">Mumbai's most trusted destination for authentic premium protein supplements. Multiple global brands, unbeatable prices, doorstep delivery.</p>
+    <div class="hero-actions animate delay-3">
+      <a href="#products" class="btn-primary">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" fill="none"/><path d="M16 10a4 4 0 01-8 0" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        Shop Now
+      </a>
+      <a href="#order" class="btn-secondary">Place Order</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-circle">
+      <div class="hero-product-center">💪</div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">50+</div><div class="label">Products</div></div>
+    <div class="hero-stat"><div class="num">10+</div><div class="label">Brands</div></div>
+    <div class="hero-stat"><div class="num">1K+</div><div class="label">Happy Customers</div></div>
+  </div>
+</section>
+
+<!-- BRANDS STRIP -->
+<div class="brands-strip">
+  <span class="brands-label">Trusted Brands</span>
+  <div class="brands-scroll" id="brandsScroll">
+    <div class="brand-pill">Optimum Nutrition</div>
+    <div class="brand-pill">MuscleBlaze</div>
+    <div class="brand-pill">MyProtein</div>
+    <div class="brand-pill">Dymatize</div>
+    <div class="brand-pill">BSN</div>
+    <div class="brand-pill">MuscleTech</div>
+    <div class="brand-pill">Scitron</div>
+    <div class="brand-pill">GNC</div>
+    <div class="brand-pill">Isopure</div>
+    <div class="brand-pill">Nitrotech</div>
+    <!-- duplicate -->
+    <div class="brand-pill">Optimum Nutrition</div>
+    <div class="brand-pill">MuscleBlaze</div>
+    <div class="brand-pill">MyProtein</div>
+    <div class="brand-pill">Dymatize</div>
+    <div class="brand-pill">BSN</div>
+    <div class="brand-pill">MuscleTech</div>
+    <div class="brand-pill">Scitron</div>
+    <div class="brand-pill">GNC</div>
+    <div class="brand-pill">Isopure</div>
+    <div class="brand-pill">Nitrotech</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header">
+    <div class="section-label">Our Collection</div>
+    <h2 class="section-title">Premium <em>Whey Proteins</em><br>& Supplements</h2>
+  </div>
+  <div class="products-grid" id="productsGrid">
+
+    <div class="product-card">
+      <div class="product-img">🥛
+        <div class="product-badge">Bestseller</div>
+      </div>
+      <div class="product-body">
+        <div class="product-brand">Optimum Nutrition</div>
+        <div class="product-name">Gold Standard 100% Whey</div>
+        <div class="product-desc">24g of blended protein per serving. Fast-absorbing whey isolate as primary protein source. The world's best-selling whey.</div>
+        <div class="product-flavours">
+          <div class="flavour-dot" style="background:#5C3317" title="Double Rich Chocolate"></div>
+          <div class="flavour-dot" style="background:#F5E6D3" title="Vanilla Ice Cream"></div>
+          <div class="flavour-dot" style="background:#C23B22" title="Strawberry"></div>
+          <div class="flavour-dot" style="background:#3A1A5C" title="Blueberry"></div>
+          <div class="flavour-dot" style="background:#6B8E23" title="Mocha Cappuccino"></div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">₹4,499 <span>/ 2lb</span></div>
+          <button class="order-btn" onclick="prefillOrder('Optimum Nutrition Gold Standard 100% Whey', '₹4,499')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🏋️
+        <div class="product-badge">Top Pick</div>
+      </div>
+      <div class="product-body">
+        <div class="product-brand">MuscleBlaze</div>
+        <div class="product-name">Biozyme Performance Whey</div>
+        <div class="product-desc">25g protein with enhanced absorption using BioZyme technology. Clinically tested formula for Indian athletes.</div>
+        <div class="product-flavours">
+          <div class="flavour-dot" style="background:#5C3317" title="Rich Chocolate"></div>
+          <div class="flavour-dot" style="background:#E8C56A" title="Kesar Pista"></div>
+          <div class="flavour-dot" style="background:#D4A0C0" title="Rose Milk"></div>
+          <div class="flavour-dot" style="background:#F5E6D3" title="Vanilla"></div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">₹3,199 <span>/ 2lb</span></div>
+          <button class="order-btn" onclick="prefillOrder('MuscleBlaze Biozyme Performance Whey', '₹3,199')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">⚡
+        <div class="product-badge">Premium</div>
+      </div>
+      <div class="product-body">
+        <div class="product-brand">Dymatize</div>
+        <div class="product-name">Elite 100% Whey Protein</div>
+        <div class="product-desc">25g fast-absorbing protein. Contains 5.5g of BCAAs and 2.7g of L-Leucine. Certified gluten free & banned substance tested.</div>
+        <div class="product-flavours">
+          <div class="flavour-dot" style="background:#3D1A0A" title="Fudge Brownie"></div>
+          <div class="flavour-dot" style="background:#F5E6D3" title="Smooth Vanilla"></div>
+          <div class="flavour-dot" style="background:#C08040" title="Gourmet Vanilla"></div>
+          <div class="flavour-dot" style="background:#B0C4DE" title="Cookies & Cream"></div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">₹5,299 <span>/ 2lb</span></div>
+          <button class="order-btn" onclick="prefillOrder('Dymatize Elite 100% Whey Protein', '₹5,299')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🌿</div>
+      <div class="product-body">
+        <div class="product-brand">MyProtein</div>
+        <div class="product-name">Impact Whey Protein</div>
+        <div class="product-desc">21g of high-quality whey protein per serving. Over 100 flavours. Made with milk from grass-fed cows. Incredible value.</div>
+        <div class="product-flavours">
+          <div class="flavour-dot" style="background:#5C3317" title="Chocolate Brownie"></div>
+          <div class="flavour-dot" style="background:#F0A0A0" title="Strawberry Cream"></div>
+          <div class="flavour-dot" style="background:#90EE90" title="Unflavoured"></div>
+          <div class="flavour-dot" style="background:#FFE4B5" title="Banana"></div>
+          <div class="flavour-dot" style="background:#B0C0FF" title="Blueberry"></div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">₹2,899 <span>/ 1kg</span></div>
+          <button class="order-btn" onclick="prefillOrder('MyProtein Impact Whey Protein', '₹2,899')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🔬
+        <div class="product-badge">Isolate</div>
+      </div>
+      <div class="product-body">
+        <div class="product-brand">Isopure</div>
+        <div class="product-name">Zero Carb Whey Isolate</div>
+        <div class="product-desc">25g of 100% pure whey protein isolate. Zero carbs, zero fat, zero lactose. Ultra-clean for cutting phases.</div>
+        <div class="product-flavours">
+          <div class="flavour-dot" style="background:#D0F0E0" title="Alpine Punch"></div>
+          <div class="flavour-dot" style="background:#5C3317" title="Chocolate"></div>
+          <div class="flavour-dot" style="background:#F5E6D3" title="Vanilla"></div>
+          <div class="flavour-dot" style="background:#FFB6C1" title="Strawberry"></div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">₹6,499 <span>/ 3lb</span></div>
+          <button class="order-btn" onclick="prefillOrder('Isopure Zero Carb Whey Isolate', '₹6,499')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">💥</div>
+      <div class="product-body">
+        <div class="product-brand">BSN</div>
+        <div class="product-name">Syntha-6 Ultra-Premium</div>
+        <div class="product-desc">22g protein with a multi-functional protein matrix. Sustained-release formula ideal for any time of day. Exceptionally rich taste.</div>
+        <div class="product-flavours">
+          <div class="flavour-dot" style="background:#2E1A0E" title="Chocolate Milkshake"></div>
+          <div class="flavour-dot" style="background:#F5F5DC" title="Vanilla Ice Cream"></div>
+          <div class="flavour-dot" style="background:#8B008B" title="Strawberry Milkshake"></div>
+          <div class="flavour-dot" style="background:#B8860B" title="Peanut Butter Cookie"></div>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">₹5,799 <span>/ 5lb</span></div>
+          <button class="order-btn" onclick="prefillOrder('BSN Syntha-6 Ultra-Premium Protein', '₹5,799')">Order →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-label">Our Promise</div>
+  <h2 class="section-title">Why Choose <em>AM Nutrition</em></h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">✅</div>
+      <div class="why-title">100% Authentic Products</div>
+      <div class="why-text">Every product is sourced directly from authorized distributors. Scan QR codes to verify authenticity. No fakes, ever.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🚀</div>
+      <div class="why-title">Fast Mumbai Delivery</div>
+      <div class="why-text">Same-day delivery across Mumbai. Securely packed to preserve product integrity. Track your order in real time.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Guaranteed Best Price</div>
+      <div class="why-text">We match or beat any authorized competitor's price. Bulk discounts available for serious athletes and gym owners.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🎯</div>
+      <div class="why-title">Expert Guidance</div>
+      <div class="why-text">Not sure which protein suits your goal? Our team helps you pick the right supplement for your body type and training.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="order-layout">
+    <div class="order-left">
+      <div class="section-label">Order Directly</div>
+      <h2 class="section-title">Place Your Order<br>via <em>WhatsApp</em></h2>
+      <p>Fill the form and your order details will be sent directly to our WhatsApp. Our team will confirm availability, pricing, and delivery within minutes.</p>
+      <div class="order-features">
+        <div class="order-feature">
+          <div class="order-feature-icon">⚡</div>
+          <div class="order-feature-text">Instant confirmation within 5 minutes</div>
+        </div>
+        <div class="order-feature">
+          <div class="order-feature-icon">🔒</div>
+          <div class="order-feature-text">Secure payment options – UPI, Cash, Bank Transfer</div>
+        </div>
+        <div class="order-feature">
+          <div class="order-feature-icon">📦</div>
+          <div class="order-feature-text">Free delivery on orders above ₹2,000</div>
+        </div>
+        <div class="order-feature">
+          <div class="order-feature-icon">🔄</div>
+          <div class="order-feature-text">Easy exchange on sealed products</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-form">
+      <div class="form-title">Send Order to WhatsApp</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="custName" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="custPhone" placeholder="+91 XXXXX XXXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Product / Brand</label>
+        <select id="productSelect">
+          <option value="">Select a product...</option>
+          <option>Optimum Nutrition – Gold Standard Whey</option>
+          <option>MuscleBlaze – Biozyme Performance Whey</option>
+          <option>Dymatize – Elite 100% Whey Protein</option>
+          <option>MyProtein – Impact Whey Protein</option>
+          <option>Isopure – Zero Carb Whey Isolate</option>
+          <option>BSN – Syntha-6 Ultra-Premium</option>
+          <option>MuscleTech – NitroTech Whey Gold</option>
+          <option>Scitron – Advance Whey Protein</option>
+          <option>GNC – Pro Performance Whey</option>
+          <option>Other (mention in notes)</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Flavour</label>
+          <input type="text" id="flavour" placeholder="e.g. Double Chocolate">
+        </div>
+        <div class="form-group">
+          <label>Size / Quantity</label>
+          <select id="size">
+            <option value="">Select size...</option>
+            <option>1 lb</option>
+            <option>2 lb</option>
+            <option>2.2 lb (1 kg)</option>
+            <option>4 lb</option>
+            <option>5 lb</option>
+            <option>10 lb</option>
+            <option>Multiple bags</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <input type="text" id="address" placeholder="Your Mumbai address or area">
+      </div>
+      <div class="form-group">
+        <label>Additional Notes</label>
+        <textarea id="notes" placeholder="Any specific requirements, budget, or questions..."></textarea>
+      </div>
+      <button class="whatsapp-btn" onclick="sendToWhatsApp()">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Send Order via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">AM <span>Nutrition</span> & Supplements</div>
+    <div class="footer-text" style="margin-top:6px">Mumbai's Premium Supplement Store · © 2025</div>
+  </div>
+  <div class="footer-text" style="text-align:center">
+    Authentic Products · Best Prices · Fast Delivery
+  </div>
+  <a class="footer-wa" href="https://wa.me/919999999999" target="_blank">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    Chat on WhatsApp
+  </a>
+</footer>
+
+<script>
+  // ── REPLACE with actual WhatsApp number ──
+  const OWNER_WHATSAPP = '919999999999';
+
+  function sendToWhatsApp() {
+    const name    = document.getElementById('custName').value.trim();
+    const phone   = document.getElementById('custPhone').value.trim();
+    const product = document.getElementById('productSelect').value;
+    const flavour = document.getElementById('flavour').value.trim();
+    const size    = document.getElementById('size').value;
+    const address = document.getElementById('address').value.trim();
+    const notes   = document.getElementById('notes').value.trim();
+
+    if (!name || !product || !phone) {
+      alert('Please fill in your name, phone number, and select a product.');
+      return;
+    }
+
+    const msg = [
+      '🏋️‍♂️ *New Order – AM Nutrition & Supplements*',
+      '',
+      `👤 *Name:* ${name}`,
+      `📞 *Phone:* ${phone}`,
+      `📦 *Product:* ${product}`,
+      flavour ? `🍫 *Flavour:* ${flavour}` : '',
+      size    ? `⚖️ *Size:* ${size}` : '',
+      address ? `📍 *Address:* ${address}` : '',
+      notes   ? `📝 *Notes:* ${notes}` : '',
+      '',
+      '_Sent from AM Nutrition Website_'
+    ].filter(Boolean).join('\n');
+
+    const url = `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+
+  function prefillOrder(product, price) {
+    document.getElementById('productSelect').value = '';
+    // scroll to order section
+    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+    // try to pre-select the product dropdown
+    setTimeout(() => {
+      const sel = document.getElementById('productSelect');
+      for (let opt of sel.options) {
+        if (opt.text.toLowerCase().includes(product.split(' ')[0].toLowerCase())) {
+          sel.value = opt.value; break;
+        }
+      }
+      document.getElementById('notes').value = `Interested in: ${product} (${price})`;
+    }, 600);
+  }
+
+  // Subtle scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .why-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
